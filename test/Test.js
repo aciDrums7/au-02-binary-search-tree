@@ -1,8 +1,9 @@
-const Tree = require('../Tree')
-const Node = require('../Node')
+const Tree = require('../src/Tree')
+const Node = require('../src/Node')
 const { assert } = require('chai')
 
-describe('tree', () => {
+describe('tree', function () {
+    this.timeout(0)
     const tree = new Tree()
 
     it('should have a null root', () => {
@@ -100,4 +101,4 @@ describe('tree', () => {
             })
         })
     })
-}).timeout()
+})

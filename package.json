@@ -6,12 +6,13 @@
     "license": "MIT",
     "private": false,
     "scripts": {
-        "test": "mocha src/test/Test.js",
+        "test": "mocha test/Test.js",
         "format": "prettier --write ."
     },
     "devDependencies": {
         "chai": "^4.3.7",
         "mocha": "^10.2.0",
+        "nyc": "^15.1.0",
         "prettier": "^2.8.8"
     }
 }

@@ -1,27 +1,22 @@
 class Tree {
     constructor() {
         this.root = null
+        this.leaf = null
     }
 
     addNode(newNode) {
-        if (this.root) {
-            if (newNode.data > this.root.data)
-                this.addNodeToLeaf(this.root, newNode, true)
-            else this.addNodeToLeaf(this.root, newNode, false)
+        if (this.leaf) {
+            let leftOrRight = newNode.data > this.leaf.data ? 'right' : 'left'
+            if (!this.leaf[leftOrRight]) {
+                this.leaf[leftOrRight] = newNode
+                this.leaf = this.root
+            } else {
+                this.leaf = this.leaf[leftOrRight]
+                this.addNode(newNode)
+            }
         } else {
             this.root = newNode
-        }
-    }
-
-    addNodeToLeaf(parent, newNode, isNewNodeGreaterThanParent) {
-        let child = isNewNodeGreaterThanParent ? parent.right : parent.left
-        if (!child) child = newNode
-        else {
-            const isNewNodeGreaterThanChild =
-                newNode.data > child.data ? true : false
-            if (isNewNodeGreaterThanChild)
-                this.addNodeToLeaf(child, newNode, true)
-            else this.addNodeToLeaf(child, newNode, false)
+            this.leaf = this.root
         }
     }
 }
